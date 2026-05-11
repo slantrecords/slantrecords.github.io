@@ -13,26 +13,43 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            background-image: url(tlo.jpg);
-                        /* Brak powtarzania obrazka */
-            background-repeat: no-repeat;
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
 
-            /* Wyśrodkowanie obrazka */
-            background-position: center center;
+    /* układ strony */
+    margin: 0;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
 
-            /* Dopasowanie do całego ekranu */
-            background-size: cover;
+    /* fallback (desktop) */
+    background-image: url("tlo.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 
-            /* Tło zostaje nieruchome przy scrollowaniu */
-            background-attachment: fixed;
+    /* usuwamy problematyczne fixed */
+    background-attachment: scroll;
+}
 
-            /* Wysokość całego okna */
-            height: auto;
+/* FIX: prawdziwe "fixed background" */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
 
-        }
+    width: 100%;
+    height: 100%;
+
+    background-image: url("tlo.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    z-index: -1;
+}
 
         .container {
             width: 100%;
@@ -62,6 +79,7 @@
         @media (max-width: 768px) {
             body {
                 padding: 10px;
+                background-attachment: fixed;
             }
 
             .box {
