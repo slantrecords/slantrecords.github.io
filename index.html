@@ -141,63 +141,58 @@
 
 </head>
 <body>
-    <!--
-    <div class="container">
-        <div class="box">🔊 Jaker - Oppenheimer feat. SeReK, Eren (cuty. SeReK)</div>
-        <div class="box">🔊 SeReK & Eren - Dobranocka feat. Mart</div>
-        <div class="box">🔊 Blackpope Bman - Underdogs (feat. Kluzio & Gieha)</div>
-        <div class="box">🔊 KW4RC - Nie ma miejsca jak dom ft.SeReK	</div>
-        <div class="box">🔊 Urwis - Rodeo feat. Eren (prod. Jakub Galiński)</div>
-        <div class="box">🔊 SeReK - Zjadam zęby (prod. Jeleń)</div>
-        <div class="box">🔊 KW4RC - Fraktal</div>
-        <div class="box">🔊 SeReK - Droga feat. Blackpope, Eren, Ten Esten (prod. Starbeats)</div>
-        <div class="box">🔊 SeReK - Dziki Zachód</div>
-        <div class="box">🔊 EMDO ft. SeReK, ECHO.REC - IKAR  Prod. EMDO  Cuty. Dj Yamakashi ( AUDIO )</div>
-        <div class="box">🔊 Eren - Kolejny rok feat. SeReK, MIHU, Majer</div>
-    </div>
-    -->
 
     <div class="container">
+
         <div class="song-list">
 
             <a class="song"
-            onclick="playSong('Zbuku.mp3')">
-            🔊 Jaker - Oppenheimer feat. SeReK, Eren (cuty. SeReK)
+               href="https://soundcloud.com/forss/flickermood"
+               onclick="event.preventDefault(); playSC(this.href);">
+
+               🔊 Forss - Flickermood
+
             </a>
 
             <a class="song"
-            onclick="playSong('audio/SeReK & Eren - Dobranocka feat. Mart.wav')">
-            🔊 SeReK & Eren - Dobranocka feat. Mart
-            </a>
+               href="https://soundcloud.com/miami-nights-1984/accelerated"
+               onclick="event.preventDefault(); playSC(this.href);">
 
-            <a class="song"
-            onclick="playSong('audio/Blackpope Bman - Underdogs (feat. Kluzio & Gieha).wav')">
-            🔊 Blackpope Bman - Underdogs (feat. Kluzio & Gieha)
+               🔊 Miami Nights 1984 - Accelerated
+
             </a>
 
         </div>
 
-        <!-- Pasek odtwarzacza -->
-        <div class="player-bar">
-
-            <audio id="audioPlayer" controls>
-                <source src="" type="audio/mpeg">
-                Twoja przeglądarka nie obsługuje audio.
-            </audio>
-
-        </div>
-
-        <script>
-            const player = document.getElementById("audioPlayer");
-
-            function playSong(songPath) {
-
-                player.src = songPath;
-
-                player.play();
-            }
-        </script>
     </div>
+
+    <!-- Pasek odtwarzacza -->
+    <div class="player-bar">
+
+        <iframe
+            id="sc-player"
+            width="100%"
+            height="120"
+            allow="autoplay"
+            frameborder="0">
+        </iframe>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+
+    function playSC(trackUrl) {
+
+        const player = document.getElementById("sc-player");
+
+        player.src =
+            "https://w.soundcloud.com/player/?url=" +
+            encodeURIComponent(trackUrl) +
+            "&auto_play=true";
+    }
+
+    </script>
 
 </body>
 </html>
