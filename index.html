@@ -1,21 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Mix/Mastering by Slant Records</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        /* Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<title>A/B Grid Player</title>
 
-    body {
+<style>
+
+body {
+        /* 
         font-family: Arial, sans-serif;
         padding: 20px;
+        */
 
         /* układ strony */
         margin: 0;
@@ -31,168 +28,425 @@
 
         /* usuwamy problematyczne fixed */
         background-attachment: scroll;
-    }
+}
 
-    /* FIX: prawdziwe "fixed background" */
-    body::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
+.grid {
+    display: grid;
+     grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 200px;
+}
 
-        width: 100%;
-        height: 100%;
+.player {
+    background: rgba(255,255,255,0.01);
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
 
-        background-image: url("tlo.jpg");
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
+.title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: white;
+    opacity: 0.8;
+}
 
-        z-index: -1;
-    }
+.switch {
+    display: flex;
+    background: #2a2f36;
+    border-radius: 15px;
+    padding: 6px;
+    margin-bottom: 10px;
+}
 
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 1.0;
+.switch button {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: white;
+    padding: 8px;
+    border-radius: 10px;
+    cursor: pointer;
+}
 
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            gap: 20px;
+.switch button.active {
+    background: #9aa7ff;
+}
 
-            align-items: flex-start;
+input[type="range"] {
+    width: 100%;
+    margin: 10px 0;
+}
 
-        }
+.play {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid #9aa7ff;
+    background: transparent;
+    color: #9aa7ff;
+    cursor: pointer;
+}
 
-        .box {
-            display: inline-block; /* automatyczna długość box'a */
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
-            padding: 5px;
-            border-radius: 10px;
-            text-align: left;
-            
-        }
-
-        /* Styl dla telefonów */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-                background-attachment: fixed;
-            }
-
-            .box {
-                font-size: 18px;
-            }
-        }
-
-        /* Styl dla komputerów */
-        @media (min-width: 769px) {
-            .box {
-                font-size: 20px;
-            }
-        }
-
-        /* Lista utworów */
-        .song-list {
-        padding: 20px;
-        }
-
-        .song {
-        display: block;
-        margin-bottom: 10px;
-        padding: 10px;
-        background: rgba(0,0,0,0.6);
-        color: white;
-        border-radius: 10px;
-        text-decoration: none;
-        width: fit-content;
-        cursor: pointer;
-        }
-
-        /* Pasek audio na dole */
-        .player-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-
-            width: 100%;
-
-            background: rgba(0,0,0,0.15);
-
-            padding: 10px;
-
-            box-sizing: border-box;
-
-            backdrop-filter: blur(10px);
-
-            z-index: 999;
-        }
-
-        /* Audio */
-        audio {
-            width: 100%;
-            filter: invert(1) sepia(1) saturate(5) hue-rotate(200deg);
-        }
-
-
-    </style>
-
+</style>
 </head>
+
 <body>
 
-    <div class="container">
+<div class="grid">
 
-        <div class="song-list">
+    <!-- PLAYER 1 -->
+    <div class="player" data-before="audio/dobranocka_wersja1.mp3" data-after="audio/dobranocka_wersja2.mp3">
+        <div class="title">SeReK & Eren - Dobranocka feat. Mart</div>
 
-            <a class="song"
-               href="https://soundcloud.com/forss/flickermood"
-               onclick="event.preventDefault(); playSC(this.href);">
-
-               🔊 Forss - Flickermood
-
-            </a>
-
-            <a class="song"
-               href="https://soundcloud.com/miami-nights-1984/accelerated"
-               onclick="event.preventDefault(); playSC(this.href);">
-
-               🔊 Miami Nights 1984 - Accelerated
-
-            </a>
-
+        <div class="switch">
+            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
+            <button onclick="setMode(this,'after')">🔊 Po</button>
         </div>
 
+        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
+
+        <br><br>
+
+        <button class="play" onclick="toggle(this)">⏸️</button>
+
+        <audio></audio>
     </div>
 
-    <!-- Pasek odtwarzacza -->
-    <div class="player-bar">
+    <!-- PLAYER 2 -->
+    <div class="player" data-before="audio/oppenheimer_wersja1.mp3" data-after="audio/oppenheimer_wersja2.mp3">
+        <div class="title">Jaker - Oppenheimer feat. SeReK, Eren</div>
 
-        <iframe
-            id="sc-player"
-            width="100%"
-            height="120"
-            allow="autoplay"
-            frameborder="0">
-        </iframe>
+        <div class="switch">
+            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
+            <button onclick="setMode(this,'after')">🔊 Po</button>
+        </div>
 
+        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
+
+        <br><br>
+
+        <button class="play" onclick="toggle(this)">⏸️</button>
+
+        <audio></audio>
     </div>
 
-    <!-- JavaScript -->
-    <script>
+    <!-- PLAYER 3 -->
+    <div class="player" data-before="audio/dobranocka_wersja1.mp3" data-after="audio/dobranocka_wersja2.mp3">
+        <div class="title">SeReK & Eren - Dobranocka feat. Mart</div>
 
-    function playSC(trackUrl) {
+        <div class="switch">
+            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
+            <button onclick="setMode(this,'after')">🔊 Po</button>
+        </div>
 
-        const player = document.getElementById("sc-player");
+        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
 
-        player.src =
-            "https://w.soundcloud.com/player/?url=" +
-            encodeURIComponent(trackUrl) +
-            "&auto_play=true";
+        <br><br>
+
+        <button class="play" onclick="toggle(this)">⏸️</button>
+
+        <audio></audio>
+    </div>
+
+    <!-- PLAYER 4 -->
+    <div class="player" data-before="audio/oppenheimer_wersja1.mp3" data-after="audio/oppenheimer_wersja2.mp3">
+        <div class="title">Jaker - Oppenheimer feat. SeReK, Eren</div>
+
+        <div class="switch">
+            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
+            <button onclick="setMode(this,'after')">🔊 Po</button>
+        </div>
+
+        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
+
+        <br><br>
+
+        <button class="play" onclick="toggle(this)">⏸️</button>
+
+        <audio></audio>
+    </div>
+
+
+
+
+     <!-- PLAYER 1 -->
+    <div class="player" data-before="audio/dobranocka_wersja1.mp3" data-after="audio/dobranocka_wersja2.mp3">
+        <div class="title">SeReK & Eren - Dobranocka feat. Mart</div>
+
+        <div class="switch">
+            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
+            <button onclick="setMode(this,'after')">🔊 Po</button>
+        </div>
+
+        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
+
+        <br><br>
+
+        <button class="play" onclick="toggle(this)">⏸️</button>
+
+        <audio></audio>
+    </div>
+
+    <!-- PLAYER 2 -->
+    <div class="player" data-before="audio/oppenheimer_wersja1.mp3" data-after="audio/oppenheimer_wersja2.mp3">
+        <div class="title">Jaker - Oppenheimer feat. SeReK, Eren</div>
+
+        <div class="switch">
+            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
+            <button onclick="setMode(this,'after')">🔊 Po</button>
+        </div>
+
+        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
+
+        <br><br>
+
+        <button class="play" onclick="toggle(this)">⏸️</button>
+
+        <audio></audio>
+    </div>
+
+    <!-- PLAYER 3 -->
+    <div class="player" data-before="audio/dobranocka_wersja1.mp3" data-after="audio/dobranocka_wersja2.mp3">
+        <div class="title">SeReK & Eren - Dobranocka feat. Mart</div>
+
+        <div class="switch">
+            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
+            <button onclick="setMode(this,'after')">🔊 Po</button>
+        </div>
+
+        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
+
+        <br><br>
+
+        <button class="play" onclick="toggle(this)">⏸️</button>
+
+        <audio></audio>
+    </div>
+
+    <!-- PLAYER 4 -->
+    <div class="player" data-before="audio/oppenheimer_wersja1.mp3" data-after="audio/oppenheimer_wersja2.mp3">
+        <div class="title">Jaker - Oppenheimer feat. SeReK, Eren</div>
+
+        <div class="switch">
+            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
+            <button onclick="setMode(this,'after')">🔊 Po</button>
+        </div>
+
+        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
+
+        <br><br>
+
+        <button class="play" onclick="toggle(this)">⏸️</button>
+
+        <audio></audio>
+    </div>
+
+
+
+    
+ <!-- PLAYER 1 -->
+    <div class="player" data-before="audio/dobranocka_wersja1.mp3" data-after="audio/dobranocka_wersja2.mp3">
+        <div class="title">SeReK & Eren - Dobranocka feat. Mart</div>
+
+        <div class="switch">
+            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
+            <button onclick="setMode(this,'after')">🔊 Po</button>
+        </div>
+
+        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
+
+        <br><br>
+
+        <button class="play" onclick="toggle(this)">⏸️</button>
+
+        <audio></audio>
+    </div>
+
+    <!-- PLAYER 2 -->
+    <div class="player" data-before="audio/oppenheimer_wersja1.mp3" data-after="audio/oppenheimer_wersja2.mp3">
+        <div class="title">Jaker - Oppenheimer feat. SeReK, Eren</div>
+
+        <div class="switch">
+            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
+            <button onclick="setMode(this,'after')">🔊 Po</button>
+        </div>
+
+        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
+
+        <br><br>
+
+        <button class="play" onclick="toggle(this)">⏸️</button>
+
+        <audio></audio>
+    </div>
+
+    <!-- PLAYER 3 -->
+    <div class="player" data-before="audio/dobranocka_wersja1.mp3" data-after="audio/dobranocka_wersja2.mp3">
+        <div class="title">SeReK & Eren - Dobranocka feat. Mart</div>
+
+        <div class="switch">
+            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
+            <button onclick="setMode(this,'after')">🔊 Po</button>
+        </div>
+
+        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
+
+        <br><br>
+
+        <button class="play" onclick="toggle(this)">⏸️</button>
+
+        <audio></audio>
+    </div>
+
+    <!-- PLAYER 4 -->
+    <div class="player" data-before="audio/oppenheimer_wersja1.mp3" data-after="audio/oppenheimer_wersja2.mp3">
+        <div class="title">Jaker - Oppenheimer feat. SeReK, Eren</div>
+
+        <div class="switch">
+            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
+            <button onclick="setMode(this,'after')">🔊 Po</button>
+        </div>
+
+        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
+
+        <br><br>
+
+        <button class="play" onclick="toggle(this)">⏸️</button>
+
+        <audio></audio>
+    </div>
+
+
+</div>
+
+<script>
+
+/* =========================
+   GLOBAL STATE
+========================= */
+let activeAudio = null;
+
+/* =========================
+   STOP ALL OTHER AUDIO
+========================= */
+function stopAll(audio) {
+    document.querySelectorAll("audio").forEach(a => {
+        if (a !== audio) {
+            a.pause();
+        }
+    });
+}
+
+/* =========================
+   PLAY / PAUSE
+========================= */
+function toggle(btn) {
+
+    const player = getPlayer(btn);
+    const audio = player.audio;
+
+    stopAll(audio);
+
+    if (audio.paused) {
+        audio.play();
+        activeAudio = audio;
+    } else {
+        audio.pause();
+        activeAudio = null;
     }
+}
 
-    </script>
+/* =========================
+   MODE CHANGE
+========================= */
+function setMode(btn, mode) {
+
+    const player = getPlayer(btn);
+    const audio = player.audio;
+
+    const currentTime = audio.currentTime;
+
+    stopAll(audio);
+
+    audio.pause();
+
+    const src = (mode === "before")
+        ? player.el.dataset.before
+        : player.el.dataset.after;
+
+    audio.src = src;
+    audio.load();
+
+    audio.onloadeddata = () => {
+        audio.currentTime = currentTime;
+        audio.play();
+        activeAudio = audio;
+    };
+
+    updateButtons(player.el, mode);
+}
+
+/* =========================
+   SEEK
+========================= */
+function seek(slider) {
+
+    const player = getPlayer(slider);
+    const audio = player.audio;
+
+    if (!audio.duration) return;
+
+    audio.currentTime = (slider.value / 100) * audio.duration;
+}
+
+/* =========================
+   GET PLAYER
+========================= */
+function getPlayer(el) {
+
+    const box = el.closest(".player");
+
+    return {
+        el: box,
+        audio: box.querySelector("audio"),
+        slider: box.querySelector("input")
+    };
+}
+
+/* =========================
+   UI UPDATE
+========================= */
+function updateButtons(box, mode) {
+
+    const buttons = box.querySelectorAll(".switch button");
+
+    buttons.forEach(b => b.classList.remove("active"));
+
+    if (mode === "before") buttons[0].classList.add("active");
+    else buttons[1].classList.add("active");
+}
+
+/* =========================
+   SLIDER SYNC
+========================= */
+setInterval(() => {
+
+    document.querySelectorAll(".player").forEach(box => {
+
+        const audio = box.querySelector("audio");
+        const slider = box.querySelector("input");
+
+        if (audio.duration) {
+            slider.value = (audio.currentTime / audio.duration) * 100;
+        }
+
+    });
+
+}, 100);
+
+</script>
 
 </body>
 </html>
