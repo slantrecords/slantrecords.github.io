@@ -13,48 +13,48 @@
             box-sizing: border-box;
         }
 
-body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
 
-    /* układ strony */
-    margin: 0;
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
+        /* układ strony */
+        margin: 0;
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
 
-    /* fallback (desktop) */
-    background-image: url("tlo.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+        /* fallback (desktop) */
+        background-image: url("tlo.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
 
-    /* usuwamy problematyczne fixed */
-    background-attachment: scroll;
-}
+        /* usuwamy problematyczne fixed */
+        background-attachment: scroll;
+    }
 
-/* FIX: prawdziwe "fixed background" */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
+    /* FIX: prawdziwe "fixed background" */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
 
-    width: 100%;
-    height: 100%;
+        width: 100%;
+        height: 100%;
 
-    background-image: url("tlo.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+        background-image: url("tlo.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
 
-    z-index: -1;
-}
+        z-index: -1;
+    }
 
         .container {
             width: 100%;
             max-width: 1200px;
-            margin: 10px;
+            margin: 1.0;
 
             display: flex;
             justify-content: center;
@@ -162,17 +162,17 @@ body::before {
 
             <a class="song"
             onclick="playSong('Zbuku.mp3')">
-            ▶ Jaker - Oppenheimer feat. SeReK, Eren (cuty. SeReK)
+            🔊 Jaker - Oppenheimer feat. SeReK, Eren (cuty. SeReK)
             </a>
 
             <a class="song"
             onclick="playSong('audio/SeReK & Eren - Dobranocka feat. Mart.wav')">
-            ▶ SeReK & Eren - Dobranocka feat. Mart
+            🔊 SeReK & Eren - Dobranocka feat. Mart
             </a>
 
             <a class="song"
             onclick="playSong('audio/Blackpope Bman - Underdogs (feat. Kluzio & Gieha).wav')">
-            ▶ Blackpope Bman - Underdogs (feat. Kluzio & Gieha)
+            🔊 Blackpope Bman - Underdogs (feat. Kluzio & Gieha)
             </a>
 
         </div>
