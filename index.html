@@ -65,7 +65,7 @@ body {
     padding: 15px;
     border-radius: 15px;
     text-align: center;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(3px);
 }
 
 .title {
@@ -135,6 +135,61 @@ input[type="range"] {
 <div class="grid">
 
     <!-- PLAYER 1 -->
+    
+    <div class="player" data-before="oppenheimer_wersja1.mp3" data-after="oppenheimer_wersja2.mp3">
+        <div class="title">Jaker - Oppenheimer feat. SeReK, Eren (cuty. Slant Records)</div>
+
+        <div class="switch">
+            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
+            <button onclick="setMode(this,'after')">🔊 Po</button>
+        </div>
+
+        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
+
+        <br><br>
+
+        <button class="play" onclick="toggle(this)">⏸️</button>
+
+        <audio></audio>
+    </div>
+
+    <!-- PLAYER 2 -->
+    <div class="player" data-before="dobranocka_wersja1.mp3" data-after="dobranocka_wersja2.mp3">
+        <div class="title">Urwis - Rodeo feat. Eren (prod. Jakub Galiński)</div>
+
+        <div class="switch">
+            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
+            <button onclick="setMode(this,'after')">🔊 Po</button>
+        </div>
+
+        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
+
+        <br><br>
+
+        <button class="play" onclick="toggle(this)">⏸️</button>
+
+        <audio></audio>
+    </div>
+
+    <!-- PLAYER 3 -->
+    <div class="player" data-before="audio/dobranocka_wersja1.mp3" data-after="audio/dobranocka_wersja2.mp3">
+        <div class="title">KW4RC - Hudson</div>
+
+        <div class="switch">
+            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
+            <button onclick="setMode(this,'after')">🔊 Po</button>
+        </div>
+
+        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
+
+        <br><br>
+
+        <button class="play" onclick="toggle(this)">⏸️</button>
+
+        <audio></audio>
+    </div>
+
+    <!-- PLAYER 4 -->
     <div class="player" data-before="dobranocka_wersja1.mp3" data-after="dobranocka_wersja2.mp3">
         <div class="title">SeReK & Eren - Dobranocka feat. Mart</div>
 
@@ -152,9 +207,171 @@ input[type="range"] {
         <audio></audio>
     </div>
 
-    <!-- PLAYER 2 -->
+     <!-- PLAYER 5 -->
+    <div class="player" data-before="audio/dobranocka_wersja1.mp3" data-after="audio/dobranocka_wersja2.mp3">
+        <div class="title">Eren - Głód (prod. FeRu)</div>
+
+        <div class="switch">
+            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
+            <button onclick="setMode(this,'after')">🔊 Po</button>
+        </div>
+
+        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
+
+        <br><br>
+
+        <button class="play" onclick="toggle(this)">⏸️</button>
+
+        <audio></audio>
+    </div>
+
+    <!-- PLAYER 6 -->
+    <div class="player" data-before="audio/oppenheimer_wersja1.mp3" data-after="audio/oppenheimer_wersja2.mp3">
+        <div class="title">Blackpope Bman - Underdogs (feat. Kluzio & Gieha)</div>
+
+        <div class="switch">
+            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
+            <button onclick="setMode(this,'after')">🔊 Po</button>
+        </div>
+
+        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
+
+        <br><br>
+
+        <button class="play" onclick="toggle(this)">⏸️</button>
+
+        <audio></audio>
+    </div>
+
+    <!-- PLAYER 7 -->
+    <div class="player" data-before="audio/dobranocka_wersja1.mp3" data-after="audio/dobranocka_wersja2.mp3">
+        <div class="title">KW4RC - Nie ma miejsca jak dom ft.SeReK (cuty. Slant Records)</div>
+
+        <div class="switch">
+            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
+            <button onclick="setMode(this,'after')">🔊 Po</button>
+        </div>
+
+        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
+
+        <br><br>
+
+        <button class="play" onclick="toggle(this)">⏸️</button>
+
+        <audio></audio>
+    </div>
+
+    <!-- PLAYER 8 -->
+    <div class="player" data-before="audio/oppenheimer_wersja1.mp3" data-after="audio/oppenheimer_wersja2.mp3">
+        <div class="title">SeReK - Droga feat. Blackpope, Eren, Ten Esten (prod. Starbeats)</div>
+
+        <div class="switch">
+            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
+            <button onclick="setMode(this,'after')">🔊 Po</button>
+        </div>
+
+        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
+
+        <br><br>
+
+        <button class="play" onclick="toggle(this)">⏸️</button>
+
+        <audio></audio>
+    </div>
+
+ <!-- PLAYER 9 -->
+    <div class="player" data-before="audio/dobranocka_wersja1.mp3" data-after="audio/dobranocka_wersja2.mp3">
+        <div class="title">KW4RC - Fraktal</div>
+
+        <div class="switch">
+            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
+            <button onclick="setMode(this,'after')">🔊 Po</button>
+        </div>
+
+        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
+
+        <br><br>
+
+        <button class="play" onclick="toggle(this)">⏸️</button>
+
+        <audio></audio>
+    </div>
+
+    <!-- PLAYER 10 -->
+    <div class="player" data-before="audio/oppenheimer_wersja1.mp3" data-after="audio/oppenheimer_wersja2.mp3">
+        <div class="title">Eren - Sine Nomine</div>
+
+        <div class="switch">
+            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
+            <button onclick="setMode(this,'after')">🔊 Po</button>
+        </div>
+
+        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
+
+        <br><br>
+
+        <button class="play" onclick="toggle(this)">⏸️</button>
+
+        <audio></audio>
+    </div>
+
+    <!-- PLAYER 11 -->
+    <div class="player" data-before="audio/dobranocka_wersja1.mp3" data-after="audio/dobranocka_wersja2.mp3">
+        <div class="title">SeReK - Dziki Zachód</div>
+
+        <div class="switch">
+            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
+            <button onclick="setMode(this,'after')">🔊 Po</button>
+        </div>
+
+        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
+
+        <br><br>
+
+        <button class="play" onclick="toggle(this)">⏸️</button>
+
+        <audio></audio>
+    </div>
+
+    <!-- PLAYER 12 -->
+    <div class="player" data-before="audio/oppenheimer_wersja1.mp3" data-after="audio/oppenheimer_wersja2.mp3">
+        <div class="title">EMDO ft. SeReK, ECHO.REC - IKAR  Prod. EMDO  Cuty. Dj Yamakashi ( AUDIO )</div>
+
+        <div class="switch">
+            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
+            <button onclick="setMode(this,'after')">🔊 Po</button>
+        </div>
+
+        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
+
+        <br><br>
+
+        <button class="play" onclick="toggle(this)">⏸️</button>
+
+        <audio></audio>
+    </div>
+
+    <!-- PLAYER 13 -->
+    <div class="player" data-before="dobranocka_wersja1.mp3" data-after="dobranocka_wersja2.mp3">
+        <div class="title">Eren - Kolejny rok feat. SeReK, MIHU, Majer</div>
+
+        <div class="switch">
+            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
+            <button onclick="setMode(this,'after')">🔊 Po</button>
+        </div>
+
+        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
+
+        <br><br>
+
+        <button class="play" onclick="toggle(this)">⏸️</button>
+
+        <audio></audio>
+    </div>
+
+    <!-- PLAYER 14 -->
     <div class="player" data-before="oppenheimer_wersja1.mp3" data-after="oppenheimer_wersja2.mp3">
-        <div class="title">Jaker - Oppenheimer feat. SeReK, Eren</div>
+        <div class="title">SeReK - Wizje feat. Eren, KW4RC</div>
 
         <div class="switch">
             <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
@@ -170,27 +387,9 @@ input[type="range"] {
         <audio></audio>
     </div>
 
-    <!-- PLAYER 3 -->
-    <div class="player" data-before="audio/dobranocka_wersja1.mp3" data-after="audio/dobranocka_wersja2.mp3">
-        <div class="title">SeReK & Eren - Dobranocka feat. Mart</div>
-
-        <div class="switch">
-            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
-            <button onclick="setMode(this,'after')">🔊 Po</button>
-        </div>
-
-        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
-
-        <br><br>
-
-        <button class="play" onclick="toggle(this)">⏸️</button>
-
-        <audio></audio>
-    </div>
-
-    <!-- PLAYER 4 -->
+    <!-- PLAYER 15 -->
     <div class="player" data-before="audio/oppenheimer_wersja1.mp3" data-after="audio/oppenheimer_wersja2.mp3">
-        <div class="title">Jaker - Oppenheimer feat. SeReK, Eren</div>
+        <div class="title">EMDO - Sępy</div>
 
         <div class="switch">
             <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
@@ -204,143 +403,11 @@ input[type="range"] {
         <button class="play" onclick="toggle(this)">⏸️</button>
 
         <audio></audio>
-    </div>
+    </div> 
 
-
-
-
-     <!-- PLAYER 1 -->
+    <!-- PLAYER 16 -->
     <div class="player" data-before="audio/dobranocka_wersja1.mp3" data-after="audio/dobranocka_wersja2.mp3">
-        <div class="title">SeReK & Eren - Dobranocka feat. Mart</div>
-
-        <div class="switch">
-            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
-            <button onclick="setMode(this,'after')">🔊 Po</button>
-        </div>
-
-        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
-
-        <br><br>
-
-        <button class="play" onclick="toggle(this)">⏸️</button>
-
-        <audio></audio>
-    </div>
-
-    <!-- PLAYER 2 -->
-    <div class="player" data-before="audio/oppenheimer_wersja1.mp3" data-after="audio/oppenheimer_wersja2.mp3">
-        <div class="title">Jaker - Oppenheimer feat. SeReK, Eren</div>
-
-        <div class="switch">
-            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
-            <button onclick="setMode(this,'after')">🔊 Po</button>
-        </div>
-
-        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
-
-        <br><br>
-
-        <button class="play" onclick="toggle(this)">⏸️</button>
-
-        <audio></audio>
-    </div>
-
-    <!-- PLAYER 3 -->
-    <div class="player" data-before="audio/dobranocka_wersja1.mp3" data-after="audio/dobranocka_wersja2.mp3">
-        <div class="title">SeReK & Eren - Dobranocka feat. Mart</div>
-
-        <div class="switch">
-            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
-            <button onclick="setMode(this,'after')">🔊 Po</button>
-        </div>
-
-        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
-
-        <br><br>
-
-        <button class="play" onclick="toggle(this)">⏸️</button>
-
-        <audio></audio>
-    </div>
-
-    <!-- PLAYER 4 -->
-    <div class="player" data-before="audio/oppenheimer_wersja1.mp3" data-after="audio/oppenheimer_wersja2.mp3">
-        <div class="title">Jaker - Oppenheimer feat. SeReK, Eren</div>
-
-        <div class="switch">
-            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
-            <button onclick="setMode(this,'after')">🔊 Po</button>
-        </div>
-
-        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
-
-        <br><br>
-
-        <button class="play" onclick="toggle(this)">⏸️</button>
-
-        <audio></audio>
-    </div>
-
-
-
-
- <!-- PLAYER 1 -->
-    <div class="player" data-before="audio/dobranocka_wersja1.mp3" data-after="audio/dobranocka_wersja2.mp3">
-        <div class="title">SeReK & Eren - Dobranocka feat. Mart</div>
-
-        <div class="switch">
-            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
-            <button onclick="setMode(this,'after')">🔊 Po</button>
-        </div>
-
-        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
-
-        <br><br>
-
-        <button class="play" onclick="toggle(this)">⏸️</button>
-
-        <audio></audio>
-    </div>
-
-    <!-- PLAYER 2 -->
-    <div class="player" data-before="audio/oppenheimer_wersja1.mp3" data-after="audio/oppenheimer_wersja2.mp3">
-        <div class="title">Jaker - Oppenheimer feat. SeReK, Eren</div>
-
-        <div class="switch">
-            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
-            <button onclick="setMode(this,'after')">🔊 Po</button>
-        </div>
-
-        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
-
-        <br><br>
-
-        <button class="play" onclick="toggle(this)">⏸️</button>
-
-        <audio></audio>
-    </div>
-
-    <!-- PLAYER 3 -->
-    <div class="player" data-before="audio/dobranocka_wersja1.mp3" data-after="audio/dobranocka_wersja2.mp3">
-        <div class="title">SeReK & Eren - Dobranocka feat. Mart</div>
-
-        <div class="switch">
-            <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
-            <button onclick="setMode(this,'after')">🔊 Po</button>
-        </div>
-
-        <input type="range" min="0" max="100" value="0" oninput="seek(this)">
-
-        <br><br>
-
-        <button class="play" onclick="toggle(this)">⏸️</button>
-
-        <audio></audio>
-    </div>
-
-    <!-- PLAYER 4 -->
-    <div class="player" data-before="audio/oppenheimer_wersja1.mp3" data-after="audio/oppenheimer_wersja2.mp3">
-        <div class="title">Jaker - Oppenheimer feat. SeReK, Eren</div>
+        <div class="title">SeReK - Gdzieś Obok (prod. Podolski)</div>
 
         <div class="switch">
             <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
