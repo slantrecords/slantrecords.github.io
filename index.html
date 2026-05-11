@@ -54,7 +54,7 @@ body::before {
         .container {
             width: 100%;
             max-width: 1200px;
-            margin: 1.0;
+            margin: 10px;
 
             display: flex;
             justify-content: center;
@@ -93,11 +93,55 @@ body::before {
                 font-size: 20px;
             }
         }
+
+        /* Lista utworów */
+        .song-list {
+        padding: 20px;
+        }
+
+        .song {
+        display: block;
+        margin-bottom: 10px;
+        padding: 10px;
+        background: rgba(0,0,0,0.6);
+        color: white;
+        border-radius: 10px;
+        text-decoration: none;
+        width: fit-content;
+        cursor: pointer;
+        }
+
+        /* Pasek audio na dole */
+        .player-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+
+            width: 100%;
+
+            background: rgba(0,0,0,0.15);
+
+            padding: 10px;
+
+            box-sizing: border-box;
+
+            backdrop-filter: blur(10px);
+
+            z-index: 999;
+        }
+
+        /* Audio */
+        audio {
+            width: 100%;
+            filter: invert(1) sepia(1) saturate(5) hue-rotate(200deg);
+        }
+
+
     </style>
 
 </head>
 <body>
-    
+    <!--
     <div class="container">
         <div class="box">🔊 Jaker - Oppenheimer feat. SeReK, Eren (cuty. SeReK)</div>
         <div class="box">🔊 SeReK & Eren - Dobranocka feat. Mart</div>
@@ -111,8 +155,49 @@ body::before {
         <div class="box">🔊 EMDO ft. SeReK, ECHO.REC - IKAR  Prod. EMDO  Cuty. Dj Yamakashi ( AUDIO )</div>
         <div class="box">🔊 Eren - Kolejny rok feat. SeReK, MIHU, Majer</div>
     </div>
-    
-    
+    -->
+
+    <div class="container">
+        <div class="song-list">
+
+            <a class="song"
+            onclick="playSong('audio/Jaker - Oppenheimer feat. SeReK, Eren (cuty. SeReK).wav')">
+            ▶ Jaker - Oppenheimer feat. SeReK, Eren (cuty. SeReK)
+            </a>
+
+            <a class="song"
+            onclick="playSong('audio/SeReK & Eren - Dobranocka feat. Mart.wav')">
+            ▶ SeReK & Eren - Dobranocka feat. Mart
+            </a>
+
+            <a class="song"
+            onclick="playSong('audio/Blackpope Bman - Underdogs (feat. Kluzio & Gieha).wav')">
+            ▶ Blackpope Bman - Underdogs (feat. Kluzio & Gieha)
+            </a>
+
+        </div>
+
+        <!-- Pasek odtwarzacza -->
+        <div class="player-bar">
+
+            <audio id="audioPlayer" controls>
+                <source src="" type="audio/mpeg">
+                Twoja przeglądarka nie obsługuje audio.
+            </audio>
+
+        </div>
+
+        <script>
+            const player = document.getElementById("audioPlayer");
+
+            function playSong(songPath) {
+
+                player.src = songPath;
+
+                player.play();
+            }
+        </script>
+    </div>
 
 </body>
 </html>
