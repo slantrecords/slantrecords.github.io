@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A/B Grid Player</title>
+<title>Slant Records Portfolio</title>
+<link rel="icon" href="favicon.ico">
 
 <style>
 
@@ -51,9 +52,12 @@ body {
 
 .grid {
     display: grid;
-     grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     padding: 20px;
+    min-height: 100vh;
+
+    align-content: center; /* 🔥 pionowe centrowanie GRIDA */
 }
 
 .player {
@@ -61,7 +65,7 @@ body {
     padding: 15px;
     border-radius: 15px;
     text-align: center;
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(4px);
 }
 
 .title {
