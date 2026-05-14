@@ -41,14 +41,17 @@ body {
         width: 100%;
         height: 100%;
 
-        background-image: url("tlo.jpg");
+        background-image: url("tlo2.jpg");
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
 
         z-index: -1;
     }
-
+/* TŁO DLA TRYBU "PO" */
+    body.after-mode::before {
+        background-image: url("tlo.jpg");
+    }
 
 .grid {
     display: grid;
@@ -120,12 +123,17 @@ input[type="range"] {
     cursor: pointer;
 }
 
-.skrecz {
-    color: yellow;
-    font-weight: bold;
-    
-}
+    .skrecz {
+        color: white;
+        font-weight: bold;
+    }
 
+    /* kolor po kliknięciu "PO" */
+    body.after-mode .skrecz {
+        color: yellow;
+    }
+
+    
 /* Styl dla telefonów */
         @media (max-width: 768px) {
             .grid {
@@ -499,12 +507,27 @@ function setMode(btn, mode) {
     audio.load();
 
     audio.onloadeddata = () => {
+
         audio.currentTime = currentTime;
         audio.play();
+
         activeAudio = audio;
     };
 
     updateButtons(player.el, mode);
+
+    /* ZMIANA TŁA */
+
+    if (mode === "after") {
+
+        document.body.classList.add("after-mode");
+
+    } else {
+
+        document.body.classList.remove("after-mode");
+
+    }
+
 }
 
 /* =========================
