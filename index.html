@@ -70,9 +70,17 @@ body {
 
 .title {
     font-size: 20px;
+    line-height: 1.4;
+    min-height: 56px; /* miejsce na 2 linie */
+
     margin-bottom: 10px;
     color: white;
     opacity: 0.8;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .switch {
@@ -112,6 +120,12 @@ input[type="range"] {
     cursor: pointer;
 }
 
+.skrecz {
+    color: yellow;
+    font-weight: bold;
+    
+}
+
 /* Styl dla telefonów */
         @media (max-width: 768px) {
             .grid {
@@ -137,7 +151,7 @@ input[type="range"] {
     <!-- PLAYER 1 -->
     
     <div class="player" data-before="oppenheimer_wersja1.mp3" data-after="oppenheimer_wersja2.mp3">
-        <div class="title">Jaker - Oppenheimer feat. SeReK, Eren (cuty. Slant Records)</div>
+        <div class="title">Jaker - Oppenheimer feat. SeReK, Eren <br><span class="skrecz">(cuty. Slant Records)</span></div>
 
         <div class="switch">
             <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
@@ -155,7 +169,7 @@ input[type="range"] {
 
     <!-- PLAYER 2 -->
     <div class="player" data-before="rodeo_wersja1.mp3" data-after="rodeo_wersja2.mp3">
-        <div class="title">Urwis - Rodeo feat. Eren (prod. Jakub Galiński)</div>
+        <div class="title">Urwis - Rodeo feat. Eren <br>(prod. Jakub Galiński)</div>
 
         <div class="switch">
             <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
@@ -173,7 +187,7 @@ input[type="range"] {
 
     <!-- PLAYER 3 -->
     <div class="player" data-before="hudson_wersja1.mp3" data-after="hudson_wersja2.mp3">
-        <div class="title">KW4RC - Hudson</div>
+        <div class="title">KW4RC - Hudson (prod. Hitemblock 999)</div>
 
         <div class="switch">
             <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
@@ -191,7 +205,7 @@ input[type="range"] {
 
     <!-- PLAYER 4 -->
     <div class="player" data-before="dobranocka_wersja1.mp3" data-after="dobranocka_wersja2.mp3">
-        <div class="title">SeReK & Eren - Dobranocka feat. Mart</div>
+        <div class="title">SeReK & Eren - Dobranocka feat. Mart <br>(prod. Jeleń)</div>
 
         <div class="switch">
             <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
@@ -227,7 +241,7 @@ input[type="range"] {
 
     <!-- PLAYER 6 -->
     <div class="player" data-before="underdogs_wersja1.mp3" data-after="underdogs_wersja2.mp3">
-        <div class="title">Blackpope Bman - Underdogs (feat. Kluzio & Gieha)</div>
+        <div class="title">Blackpope Bman - Underdogs <br>(feat. Kluzio & Gieha)</div>
 
         <div class="switch">
             <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
@@ -245,7 +259,7 @@ input[type="range"] {
 
     <!-- PLAYER 7 -->
     <div class="player" data-before="niemamiejsca_wersja1.mp3" data-after="niemamiejsca_wersja2.mp3">
-        <div class="title">KW4RC - Nie ma miejsca jak dom ft.SeReK (cuty. Slant Records)</div>
+        <div class="title">KW4RC - Nie ma miejsca jak dom ft.SeReK <br><span class="skrecz">(cuty. Slant Records)</span></div>
 
         <div class="switch">
             <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
@@ -281,7 +295,7 @@ input[type="range"] {
 
  <!-- PLAYER 9 -->
     <div class="player" data-before="fraktal_wersja1.mp3" data-after="fraktal_wersja2.mp3">
-        <div class="title">KW4RC - Fraktal</div>
+        <div class="title">KW4RC - Fraktal (prod. Premier Arena)</div>
 
         <div class="switch">
             <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
@@ -317,7 +331,7 @@ input[type="range"] {
 
     <!-- PLAYER 11 -->
     <div class="player" data-before="dzikizachod_wersja1.mp3" data-after="dzikizachod_wersja2.mp3">
-        <div class="title">SeReK - Dziki Zachód</div>
+        <div class="title">SeReK - Dziki Zachód <span class=skrecz>(prod. Slant Records)</span></div>
 
         <div class="switch">
             <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
@@ -335,7 +349,7 @@ input[type="range"] {
 
     <!-- PLAYER 12 -->
     <div class="player" data-before="ikar_wersja1.mp3" data-after="ikar_wersja2.mp3">
-        <div class="title">EMDO ft. SeReK, ECHO.REC - IKAR  Prod. EMDO  Cuty. Dj Yamakashi ( AUDIO )</div>
+        <div class="title">EMDO ft. SeReK, ECHO.REC - IKAR  <br>Prod. EMDO  Cuty. Dj Yamakashi ( AUDIO )</div>
 
         <div class="switch">
             <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
@@ -353,7 +367,7 @@ input[type="range"] {
 
     <!-- PLAYER 13 -->
     <div class="player" data-before="kolejnyrok_wersja1.mp3" data-after="kolejnyrok_wersja2.mp3">
-        <div class="title">Eren - Kolejny rok feat. SeReK, MIHU, Majer</div>
+        <div class="title">Eren - Kolejny rok feat. SeReK, MIHU, Majer (prod. MIHU)</div>
 
         <div class="switch">
             <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
@@ -371,7 +385,7 @@ input[type="range"] {
 
     <!-- PLAYER 14 -->
     <div class="player" data-before="wizje_wersja1.mp3" data-after="wizje_wersja2.mp3">
-        <div class="title">SeReK - Wizje feat. Eren, KW4RC</div>
+        <div class="title">SeReK - Wizje feat. Eren, KW4RC <span class=skrecz>(prod. Slant Records)</span></div>
 
         <div class="switch">
             <button class="active" onclick="setMode(this,'before')">🔊 Przed</button>
