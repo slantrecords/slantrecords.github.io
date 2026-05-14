@@ -133,7 +133,7 @@ input[type="range"] {
         color: yellow;
     }
 
-    
+
 /* Styl dla telefonów */
         @media (max-width: 768px) {
             .grid {
@@ -149,6 +149,65 @@ input[type="range"] {
             }
         }
 
+
+
+        /* =========================
+   PLAYER WKRÓTCE
+========================= */
+
+.player.coming-soon {
+    position: relative;
+    overflow: hidden;
+}
+
+/* blokada kliknięć */
+.player.coming-soon button,
+.player.coming-soon input {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+/* napis po skosie */
+.player.coming-soon::after {
+    content: "WKRÓTCE";
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%) rotate(-25deg);
+
+    font-size: 42px;
+    font-weight: bold;
+    color: rgba(255,255,255,0.75);
+
+    letter-spacing: 6px;
+
+    padding: 10px 30px;
+
+    border: 3px solid rgba(255,255,255,0.5);
+    border-radius: 12px;
+
+    backdrop-filter: blur(2px);
+
+    z-index: 20;
+}
+
+/* lekko przyciemnij cały player */
+.player.coming-soon::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0,0,0,0.35);
+
+    z-index: 10;
+}
+
+
+
+
+
 </style>
 </head>
 
@@ -158,7 +217,7 @@ input[type="range"] {
 
     <!-- PLAYER 1 -->
     
-    <div class="player" data-before="oppenheimer_wersja1.mp3" data-after="oppenheimer_wersja2.mp3">
+    <div class="player coming-soon" data-before="oppenheimer_wersja1.mp3" data-after="oppenheimer_wersja2.mp3">
         <div class="title">Jaker - Oppenheimer feat. SeReK, Eren <br><span class="skrecz">(cuty. Slant Records)</span></div>
 
         <div class="switch">
